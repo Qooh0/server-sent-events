@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Server Sent Events Test Page</title>
+</head>
+<body>
+    <p id="eventText">
+    </p>
+    <script>
+        var es = new EventSource('api.php');
+
+        es.addEventListener('message', function (event) {
+            console.log(event.data);
+
+            var eventList = document.getElementById('eventText');
+
+            eventList.innerHTML = "message: " + event.data;
+        });
+    </script>
+</body>
+</html>
